@@ -13,8 +13,19 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.red
+        setupUI()
         
+    }
+    
+    private func setupUI() {
+        let label = UILabel()
+        label.center = view.center
+        label.bounds = CGRect(x: 0, y: 0, width: 100, height: 50)
+        label.textAlignment = .center
+        label.textColor = UIColor.white
+        label.text = Bundle.main.nameSpace()
+        view.addSubview(label)
+        view.backgroundColor = UIColor.red
     }
 
     

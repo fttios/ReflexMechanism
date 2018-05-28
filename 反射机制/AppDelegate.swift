@@ -30,14 +30,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         /******************************测试代码******************************/
         /***********测试代码 （输出 info.plist 内容）***********/
-        print(Bundle.main.infoDictionary)
+        print(Bundle.main.infoDictionary ?? [])
         
-        let bundleName = Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
+//        let bundleName = Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
         
         // 2. 设置跟控制器
         // 使用 NSClassFromString 这种方法需要添加命名空间 -> 默认就是 项目名称（最好不要有数字和特殊字符）
 //        let clsName = "反射机制.ViewController"
-        let clsName = bundleName + "." + "ViewController"
+//        let clsName = bundleName + "." + "ViewController"
+        
+        // 利用函数调用
+//        let clsName = Bundle.main.nameSpace() + "." + "ViewController"
+        
+        // 利用计算型属性 -- 从阅读上，计算性属性更加直观
+        let clsName = Bundle.main.namespace + "." + "ViewController"
         
         let cls = NSClassFromString(clsName) as? UIViewController.Type
         
